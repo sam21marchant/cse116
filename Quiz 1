@@ -92,7 +92,7 @@ object Q4 {
    var cost: Double = 0
    for(price <- input){
      if(price < criteria){
-       cost = cost + applyTax(value)
+       cost = cost + applyTax(price)
      }
    }
    cost
