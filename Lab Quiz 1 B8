@@ -1,0 +1,143 @@
+Lab Quiz 1, Section B8
+Student Instructions
+This is an exam environment
+No talking
+No material allowed except blank paper and writing utensils
+Only ask TA’s questions clarifying what a question is asking
+
+Question 1:
+object Q1 {
+
+ def checkListOfGrades(listOfGrades: List[Int]): String = {
+   var result = “”
+   for (grade <- listOfGrades) {
+     result += checkGrade(grade, 65)
+   }
+   result
+ }
+
+ def checkGrade(grade: Int, cutoff: Int): String = {
+   if (grade > cutoff) {
+     “Passed with grade of: “ + grade + “\n”
+   } else {
+     “Failed with grade: “ + grade + “\n”
+   }
+ }
+
+ def main(args: Array[String]): Unit = {
+   val gradeList: List[Int] = List(75, 56, 94)
+   val result: String = checkListOfGrades(gradeList)
+   println(result)
+ }
+
+}
+
+Q1(20 points): What is printed to the screen when this program is executed?
+
+
+
+
+
+
+
+
+Question 2:
+
+/**
+ * Returns the average of the values in the input list of integers.
+ * If the list is empty, returns 0.0
+ */
+def computeAverage(input: List[Int]): Double = {
+ if(input.isEmpty){
+   0.0
+ }else if (input.length > 1){
+   var sum: Int = 0.0
+   for (number <- input) {
+     sum += number
+   }
+   sum / input.length
+ }
+}
+
+
+Q2(20 points): This method contains 2 errors. Identify and describe both errors
+
+
+
+
+
+
+Question 3:
+
+object Q3 {
+ def main(args: Array[String]): Unit = {
+   val startingPoints: Int = 0
+   val bulls: BasketBallTeam = new BasketBallTeam(new Score(startingPoints))
+   bulls.scoreBasket()
+   bulls.scoreBasket() //THIS IS THE HIGHLIGHTED - LINE STOP YOUR MEMORY TRACE BEFORE THIS LINE EXECUTES
+   println(bulls.score.points)
+ }
+}
+
+class BasketBallTeam(val score: Score){
+ def scoreBasket(): Unit = {
+   score.points += 2
+ }
+}
+
+class Score(var points: Int){}
+
+
+Q3a(5 points): What is printed to the screen when this program is executed?
+
+
+
+Q3b(25 points): Draw the state of the stack and heap immediately before the highlighted line is executed. Include all names and values of variables and specify which values are stored on the stack and which are stored on the heap.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Question 4:
+object Q4 {
+
+ def getTotalInvestment(input: List[Int]): Int = {
+   val criteria: Int= 500
+   var investment: Int = 0
+   for(amount <- input){
+     if(amount >= criteria){
+       investment = investment + matchInvestment(amount)
+     } else{
+	     investment = investment + amount
+     }
+   }
+   investment
+ }
+
+ def matchInvestment(input: Int): Int = {
+   val investment: Int = input * 2
+   investment //THIS IS THE HIGHLIGHTED - LINE STOP YOUR MEMORY TRACE BEFORE THIS LINE EXECUTES
+ }
+
+ def main(args: Array[String]): Unit = {
+   val listOfInvestments: List[Int] = List(500,200,1000)
+   val investment: Double = getTotalInvestment(listOfInvestments)
+   println(investment)
+ }
+
+}
+Q4a(5 points): What is printed to the screen when this program is executed?
+
+
+
+Q4b(25 points): Draw the state of the stack and heap immediately before the first time the highlighted line is executed. Include all names and values of variables and specify which values are stored on the stack and which are stored on the heap.
+
+
