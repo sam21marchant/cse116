@@ -58,8 +58,8 @@ Question 3:
 
 object Q3 {
  def main(args: Array[String]): Unit = {
-   val level: Int = 1
-   val player: DragonBorn = new DragonBorn(new OneHanded(level))
+   var level: Int = 1
+   var player: DragonBorn = new DragonBorn(new OneHanded(level))
    player.levelUpOneHanded()
    player.levelUpOneHanded() //THIS IS THE HIGHLIGHTED LINE
    println(player.oneHanded.skillLevel)
