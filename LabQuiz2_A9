@@ -1,0 +1,231 @@
+Lab Quiz 2 - A9
+
+This is an exam environment
+No talking
+No material allowed except blank paper and writing utensils
+Only ask TA’s questions clarifying what a question is asking
+
+You will have 1 hour to complete this quiz
+
+
+
+
+
+Q1 - There are two parts to this question. Use the classes Vehicle, Car, and Truck to answer both
+     of these parts.
+
+
+abstract class Vehicle(var gasInTank: Double) {
+
+ def travelXMiles(miles: Int): Double
+
+ def fillTank(): Unit = {
+   this.gasInTank += 5.0
+ }
+
+}
+
+class Car(gas: Double) extends Vehicle(gas) {
+
+ override def travelXMiles(miles: Int): Double = {
+   this.gasInTank = this.gasInTank - (miles * .1)
+   if(this.gasInTank < 0){
+	this.gasInTank = 0.0
+   }
+   this.gasInTank
+ }
+
+}
+
+class Truck(gas: Double) extends Vehicle(gas) {
+
+ override def travelXMiles(miles: Int): Double = {
+   this.gasInTank = this.gasInTank - (miles * .5)
+   if(this.gasInTank < 0){
+	this.gasInTank = 0.0
+   }
+   this.gasInTank
+ }
+
+ override def fillTank(): Unit = {
+   this.gasInTank += 10.0
+ }
+
+}
+
+
+object Part1 {
+def main(args: Array[String]): Unit = {
+
+    val car: Car = new Car(4.5)
+    val truck: Truck = new Truck(7.8)
+    val vehicle: Vehicle = car
+
+    println(car.travelXMiles(1))
+    println(vehicle.travelXMiles(4))
+    vehicle = truck
+    truck.fillTank()
+    println(vehicle.travelXMiles(2))
+    car.fillTank()
+    println(car.travelXMiles(0))
+
+}
+}
+
+Part 1: Use the code that is provided above. What is printed when the main method executes?
+
+
+
+
+
+
+
+
+
+
+
+object Part2 {
+
+  def totalGasRemaining(caravan: List[Vehicle]): Double = {
+   var total = 0.0
+   for(vehicle <- caravan){
+     total += vehicle.travelXMiles(1.5)
+   }
+   total
+  }
+
+  def stopAtGasStation(vehicles: List[Vehicle]): Unit = {
+   for(v <- vehicles){
+     vehicle.fillTank()
+   }
+  }
+
+  def main(args: Array[String]): Unit = {
+      val car: Car = new Car(10.0)
+      val truck: Truck = new Truck(8.0)
+      val vehicle: Vehicle= truck
+
+      val v: List[Vehicle] = List(car, truck, vehicle, new Car(3.0))
+
+      // 10 points
+      println(totalGasRemaining(v))
+
+      stopAtGasStation(v)
+
+      // 15 points
+      println(totalGasRemaining(v))
+  }
+}
+
+Part 2: Use the Code defined above. What is printed at each of the 2 calls of println in the Part2 main method?
+
+
+
+
+
+
+
+
+
+Q2 - This question has 5 parts(a,b,c,d,e). Use the code defined below to answer those questions.
+
+class Model {
+
+ var xp: Int = 0
+
+ def displayField(): Int= {
+   this.xp
+ }
+
+ def increaseXP(value: Int): Unit = {
+   xp += value
+}
+
+ def fightDragon(): Unit = {
+   if (xp < 20000){
+      xp = 0
+   } else{
+      xp += 5000
+   }
+ }
+
+}
+
+
+class Controller(model: Model) {
+
+ def b1Pressed(event: ActionEvent): Unit = model.increaseXP(10000)
+
+ def b2Pressed(event: ActionEvent): Unit = model.fightDragon()
+
+ def userAction(event: KeyEvent): Unit = {
+   event.getCode.getName match {
+     case "A" => model.increaseXP(2000)
+     case "B" => model.increaseXP(8000)
+     case "C" => model.fightDragon()
+     case "D" => model.increaseXP(5000)
+     case "E" => model.increaseXP(500)
+     case "X" => model.fightDragon()
+     case _ => model.increaseXP(-100)
+   }
+ }
+
+}
+
+class QuizButton(display: String, action: EventHandler[ActionEvent]) extends Button {
+ val size = 200
+ minWidth = size
+ minHeight = size
+ onAction = action
+ text = display
+ style = "-fx-font: 30 ariel;"
+}
+
+
+object View extends JFXApp {
+
+ val model: Model = new Model()
+ val controller: Controller = new Controller(model)
+
+ var textField: TextField = new TextField {
+   editable = false
+   style = "-fx-font: 26 ariel;"
+   text.value = model.displayField().toString
+ }
+
+ stage = new PrimaryStage {
+   title = "Quiz GUI"
+   scene = new Scene() {
+     content = List(
+       new GridPane {
+         add(textField, 0, 0, 2, 1)
+         add(new QuizButton("b1", controller.b1Pressed), 0, 1)
+         add(new QuizButton("b2", controller.b2Pressed), 1, 1)
+       }
+     )
+   }
+
+   addEventFilter(KeyEvent.KEY_PRESSED, controller.userAction)
+
+   // update the display after every event
+   addEventFilter(Event.ANY, (event: Event) => textField.text.value = model.displayField().toString)
+
+ }
+
+}
+
+
+What is displayed in the text field after each of the following sequences of user inputs? Assume the program has 
+been started just before the inputs for each of the 5 sequences (10 points each) 
+
+a). The user presses the button labelled a1
+
+b). The user presses the button labelled a1, a2, a1, a1, a2
+
+c). The user types “ABDBC”
+
+d). The user types “AYYYBXBZNLDA”
+
+e). The user types “AB”, presses a1, types “CCA”, presses a2
+
+
