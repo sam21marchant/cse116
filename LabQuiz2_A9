@@ -17,7 +17,7 @@ Q1 - There are two parts to this question. Use the classes Vehicle, Car, and Tru
 
 abstract class Vehicle(var gasInTank: Double) {
 
- def travelXMiles(miles: Int): Double
+ def travelXMiles(miles: Double): Double
 
  def fillTank(): Unit = {
    this.gasInTank += 5.0
@@ -27,7 +27,7 @@ abstract class Vehicle(var gasInTank: Double) {
 
 class Car(gas: Double) extends Vehicle(gas) {
 
- override def travelXMiles(miles: Int): Double = {
+ override def travelXMiles(miles: Double): Double = {
    this.gasInTank = this.gasInTank - (miles * .1)
    if(this.gasInTank < 0){
 	this.gasInTank = 0.0
@@ -39,7 +39,7 @@ class Car(gas: Double) extends Vehicle(gas) {
 
 class Truck(gas: Double) extends Vehicle(gas) {
 
- override def travelXMiles(miles: Int): Double = {
+ override def travelXMiles(miles: Double): Double = {
    this.gasInTank = this.gasInTank - (miles * .5)
    if(this.gasInTank < 0){
 	this.gasInTank = 0.0
@@ -96,7 +96,7 @@ object Part2 {
 
   def stopAtGasStation(vehicles: List[Vehicle]): Unit = {
    for(v <- vehicles){
-     vehicle.fillTank()
+     v.fillTank()
    }
   }
 
