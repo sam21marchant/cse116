@@ -68,7 +68,7 @@ def main(args: Array[String]): Unit = {
     println(vehicle.travelXMiles(2))
     car.fillTank()
     println(car.travelXMiles(0))
-
+    println(truck.travelXMiles(8))
 }
 }
 
@@ -154,9 +154,9 @@ class Model {
 
 class Controller(model: Model) {
 
- def b1Pressed(event: ActionEvent): Unit = model.increaseXP(10000)
+ def a1Pressed(event: ActionEvent): Unit = model.increaseXP(10000)
 
- def b2Pressed(event: ActionEvent): Unit = model.fightDragon()
+ def a2Pressed(event: ActionEvent): Unit = model.fightDragon()
 
  def userAction(event: KeyEvent): Unit = {
    event.getCode.getName match {
@@ -199,8 +199,8 @@ object View extends JFXApp {
      content = List(
        new GridPane {
          add(textField, 0, 0, 2, 1)
-         add(new QuizButton("b1", controller.b1Pressed), 0, 1)
-         add(new QuizButton("b2", controller.b2Pressed), 1, 1)
+         add(new QuizButton("a1", controller.a1Pressed), 0, 1)
+         add(new QuizButton("a2", controller.a2Pressed), 1, 1)
        }
      )
    }
