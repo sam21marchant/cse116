@@ -57,9 +57,9 @@ class Truck(gas: Double) extends Vehicle(gas) {
 object Part1 {
 def main(args: Array[String]): Unit = {
 
-    val car: Car = new Car(4.5)
-    val truck: Truck = new Truck(7.8)
-    val vehicle: Vehicle = car
+    var car: Car = new Car(4.5)
+    var truck: Truck = new Truck(7.8)
+    var vehicle: Vehicle = car
 
     println(car.travelXMiles(1))
     println(vehicle.travelXMiles(4))
@@ -101,9 +101,9 @@ object Part2 {
   }
 
   def main(args: Array[String]): Unit = {
-      val car: Car = new Car(10.0)
-      val truck: Truck = new Truck(8.0)
-      val vehicle: Vehicle= truck
+      var car: Car = new Car(10.0)
+      var truck: Truck = new Truck(8.0)
+      var vehicle: Vehicle= truck
 
       val v: List[Vehicle] = List(car, truck, vehicle, new Car(3.0))
 
