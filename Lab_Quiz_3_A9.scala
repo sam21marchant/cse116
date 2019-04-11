@@ -103,10 +103,10 @@ object Q3_Runner{
 
 //Q4 (25 points): Study the following code to answer the question below
 
-/*
-  class User(var name: String, var score: Int) {
-    override def toString: String = name + ": " + score
-  }*/
+
+class User(var name: String, var score: Int) {
+  override def toString: String = name + ": " + score
+}
 
 class LinkedListNode[A](var value: A, var next: LinkedListNode[A]) {
 
