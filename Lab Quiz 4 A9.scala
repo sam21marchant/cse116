@@ -52,9 +52,9 @@ class BinaryTreeNode[A](var value: A, var left: BinaryTreeNode[A], var right: Bi
 
 // b). Write the pre-order traversal of the tree (preOrderTraversal(root, println))
 
-// c). Write the pre-order traversal of the tree (inOrderTraversal(root, println))
+// c). Write the in-order traversal of the tree (inOrderTraversal(root, println))
 
-// d). Write the pre-order traversal of the tree (postOrderTraversal(root, println))
+// d). Write the post-order traversal of the tree (postOrderTraversal(root, println))
 
 
 
