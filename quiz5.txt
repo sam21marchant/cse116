@@ -288,7 +288,7 @@ When this code is working properly it should have the following features:
       How is the feature broken?
       What would you do to fix the bug?
 
-///// Bug # 1:
+///// Bug # 2:
       Where is the bug?
       What does this break?
       How is the feature broken?
